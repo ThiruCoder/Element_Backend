@@ -10,11 +10,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: [
+        'https://element-frontend-eta.vercel.app',
+        'http://localhost:3000',
+        'http://127.0.0.1:3000'
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
